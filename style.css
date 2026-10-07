@@ -154,6 +154,15 @@ input {
   border-color: var(--ube);
 }
 
+.product-image {
+  display: block;
+  width: calc(100% + 32px);
+  aspect-ratio: 4 / 3;
+  margin: -16px -16px 0;
+  object-fit: cover;
+  border-radius: 11px 11px 0 0;
+}
+
 .product-card h3 {
   margin: 0;
   font-size: 16px;
