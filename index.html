@@ -66,27 +66,24 @@
         >
         <button id="payBtn" class="primary-btn">Confirm payment</button>
         <div id="paymentMessage" class="message" role="status" aria-live="polite"></div>
+        <button id="newTransactionBtn" class="secondary-btn new-transaction-btn" hidden>
+          Start new transaction
+        </button>
       </div>
-    </section>
-
-    <!-- Receipt Section -->
-    <section class="panel receipt-panel" aria-labelledby="receiptTitle">
-      <div class="section-title">
-        <h2 id="receiptTitle">Receipt</h2>
-        <span>Printed after payment</span>
-      </div>
-
-      <div id="receipt" class="receipt">
-        <div class="receipt-placeholder">
-          Complete a valid payment to generate a receipt.
-        </div>
-      </div>
-
-      <button id="newTransactionBtn" class="secondary-btn">
-        Start new transaction
-      </button>
     </section>
   </main>
+
+  <dialog id="receiptDialog" class="receipt-dialog" aria-labelledby="receiptTitle">
+    <div class="receipt-dialog-header">
+      <h2 id="receiptTitle">Receipt</h2>
+      <button id="closeReceiptBtn" class="dialog-close" type="button" aria-label="Close receipt" title="Close receipt">×</button>
+    </div>
+    <div id="receipt" class="receipt">
+      <div class="receipt-placeholder">
+        Complete a valid payment to generate a receipt.
+      </div>
+    </div>
+  </dialog>
 
   <script src="script.js"></script>
 </body>

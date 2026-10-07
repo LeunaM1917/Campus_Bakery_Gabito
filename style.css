@@ -86,15 +86,12 @@ input {
   margin: 28px auto 56px;
   display: grid;
   grid-template-columns: minmax(0, 1.5fr) minmax(330px, 1fr);
-  grid-template-areas:
-    "products cart"
-    "receipt  cart";
+  grid-template-areas: "products cart";
   gap: 20px;
   align-items: start;
 }
 
 .products-panel { grid-area: products; }
-.receipt-panel  { grid-area: receipt; }
 
 .cart-panel {
   grid-area: cart;
@@ -425,16 +422,59 @@ input {
   color: var(--pandan);
 }
 
-/* ---------- Receipt ---------- */
-.receipt-panel {
+/* ---------- Receipt dialog ---------- */
+.receipt-dialog {
+  width: min(460px, calc(100% - 32px));
+  max-height: calc(100dvh - 32px);
+  margin: auto;
+  padding: 22px;
+  overflow-y: auto;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--page);
+  color: var(--ink);
+}
+
+.receipt-dialog::backdrop {
+  background: rgba(31, 22, 49, 0.55);
+}
+
+.receipt-dialog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.receipt-dialog-header h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 22px;
+}
+
+.dialog-close {
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.dialog-close:hover {
+  border-color: var(--ube);
   background: var(--ube-tint);
-  border-color: transparent;
 }
 
 .receipt {
   position: relative;
+  width: 100%;
   max-width: 420px;
-  margin: 0 auto 28px;
+  margin: 0 auto 12px;
   padding: 24px 22px 26px;
   background: #fff;
   font-family: var(--font-receipt);
@@ -515,6 +555,15 @@ input {
   border: 1.5px solid var(--ube);
 }
 
+.new-transaction-btn {
+  width: 100%;
+  margin-top: 12px;
+}
+
+.new-transaction-btn[hidden] {
+  display: none;
+}
+
 .secondary-btn:hover {
   background: var(--ube);
   color: #fff;
@@ -524,10 +573,7 @@ input {
 @media (max-width: 860px) {
   .layout {
     grid-template-columns: 1fr;
-    grid-template-areas:
-      "products"
-      "cart"
-      "receipt";
+    grid-template-areas: "products" "cart";
   }
 
   .cart-panel {

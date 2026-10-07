@@ -22,9 +22,11 @@ const changeBox = document.getElementById("changeBox");
 const changeAmount = document.getElementById("changeAmount");
 const paymentInput = document.getElementById("payment");
 const paymentMessage = document.getElementById("paymentMessage");
+const receiptDialog = document.getElementById("receiptDialog");
 const receipt = document.getElementById("receipt");
 const payBtn = document.getElementById("payBtn");
 const newTransactionBtn = document.getElementById("newTransactionBtn");
+const closeReceiptBtn = document.getElementById("closeReceiptBtn");
 
 function formatCurrency(amount) {
   return `₱${amount.toFixed(2)}`;
@@ -161,6 +163,8 @@ function validatePayment() {
   changeBox.hidden = false;
   showMessage("Payment successful.", "success");
   generateReceipt(amountPaid, change);
+  newTransactionBtn.hidden = false;
+  receiptDialog.showModal();
 }
 
 function generateReceipt(amountPaid, change) {
@@ -203,9 +207,14 @@ function generateReceipt(amountPaid, change) {
 }
 
 function startNewTransaction() {
+  if (receiptDialog.open) {
+    receiptDialog.close();
+  }
+
   cart = [];
   paymentInput.value = "";
   clearPaymentMessage();
+  newTransactionBtn.hidden = true;
 
   receipt.innerHTML = `
     <div class="receipt-placeholder">
@@ -230,6 +239,7 @@ function clearPaymentMessage() {
 
 payBtn.addEventListener("click", validatePayment);
 newTransactionBtn.addEventListener("click", startNewTransaction);
+closeReceiptBtn.addEventListener("click", () => receiptDialog.close());
 
 renderProducts();
 renderCart();
