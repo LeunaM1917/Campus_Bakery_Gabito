@@ -2,12 +2,12 @@
 // Product prices are based on the assigned Campus Bakery scenario.
 
 const products = [
-  { id: 1, name: "Pandesal (pack of 5)", price: 25 },
-  { id: 2, name: "Ensaymada", price: 20 },
-  { id: 3, name: "Spanish Bread", price: 15 },
-  { id: 4, name: "Chocolate Cupcake", price: 30 },
-  { id: 5, name: "Loaf Bread", price: 55 },
-  { id: 6, name: "Brewed Coffee (cup)", price: 25 }
+  { id: 1, name: "Pandesal (pack of 5)", price: 25, image: "images/Pandesal.jpg" },
+  { id: 2, name: "Ensaymada", price: 20, image: "images/Ensaymada.jpg" },
+  { id: 3, name: "Spanish Bread", price: 15, image: "images/Spanish_Bread.jpg" },
+  { id: 4, name: "Chocolate Cupcake", price: 30, image: "images/Chocolate_CupCake.jpg" },
+  { id: 5, name: "Loaf Bread", price: 55, image: "images/Loaf_Bread.jpg" },
+  { id: 6, name: "Brewed Coffee (cup)", price: 25, image: "images/Brewed_Coffee.jpg" }
 ];
 
 let cart = [];
@@ -30,6 +30,7 @@ function formatCurrency(amount) {
 function renderProducts() {
   productList.innerHTML = products.map(product => `
     <div class="product-card">
+      <img class="product-image" src="${product.image}" alt="${product.name}" loading="lazy">
       <h3>${product.name}</h3>
       <div class="price">${formatCurrency(product.price)}</div>
       <button class="add-btn" onclick="addToCart(${product.id})">
