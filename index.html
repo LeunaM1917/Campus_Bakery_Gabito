@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Campus Bakery POS</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <h1>Campus Bakery POS</h1>
+      <p>Campus Bakery • Point-of-Sale System</p>
+    </div>
+    <span class="status">Cash Payment</span>
+  </header>
+
+  <main class="layout">
+    <!-- Product Section -->
+    <section class="panel products-panel">
+      <div class="section-title">
+        <h2>Products</h2>
+        <span>Choose an item to add</span>
+      </div>
+      <div id="productList" class="product-grid"></div>
+    </section>
+
+    <!-- Cart Section -->
+    <section class="panel cart-panel">
+      <div class="section-title">
+        <h2>Order Summary</h2>
+        <span id="cartCount">0 items</span>
+      </div>
+
+      <div id="cartList" class="cart-list">
+        <div class="empty-state">No items in the cart.</div>
+      </div>
+
+      <div class="total-box">
+        <span>Total Amount</span>
+        <strong id="totalAmount">₱0.00</strong>
+      </div>
+
+      <div class="payment-area">
+        <label for="payment">Cash Payment</label>
+        <input
+          id="payment"
+          type="number"
+          min="0"
+          step="0.01"
+          placeholder="Enter amount paid"
+        >
+        <button id="payBtn" class="primary-btn">Confirm Payment</button>
+        <div id="paymentMessage" class="message"></div>
+      </div>
+    </section>
+
+    <!-- Receipt Section -->
+    <section class="panel receipt-panel">
+      <div class="section-title">
+        <h2>Receipt</h2>
+        <span>Transaction details</span>
+      </div>
+
+      <div id="receipt" class="receipt">
+        <div class="receipt-placeholder">
+          Complete a valid payment to generate a receipt.
+        </div>
+      </div>
+
+      <button id="newTransactionBtn" class="secondary-btn">
+        New Transaction
+      </button>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
