@@ -16,7 +16,10 @@ let transactionNumber = 1;
 const productList = document.getElementById("productList");
 const cartList = document.getElementById("cartList");
 const cartCount = document.getElementById("cartCount");
+const subtotalAmount = document.getElementById("subtotalAmount");
 const totalAmount = document.getElementById("totalAmount");
+const changeBox = document.getElementById("changeBox");
+const changeAmount = document.getElementById("changeAmount");
 const paymentInput = document.getElementById("payment");
 const paymentMessage = document.getElementById("paymentMessage");
 const receipt = document.getElementById("receipt");
@@ -120,10 +123,14 @@ function renderCart() {
 
   const itemCount = cart.reduce((sum, item) => sum + item.quantity, 0);
   cartCount.textContent = `${itemCount} item${itemCount !== 1 ? "s" : ""}`;
-  totalAmount.textContent = formatCurrency(getTotal());
+  const subtotal = getTotal();
+  subtotalAmount.textContent = formatCurrency(subtotal);
+  totalAmount.textContent = formatCurrency(subtotal);
 }
 
 function validatePayment() {
+  changeBox.hidden = true;
+
   if (cart.length === 0) {
     showMessage("Add at least one product before payment.", "error");
     return;
@@ -150,6 +157,8 @@ function validatePayment() {
 
   const change = amountPaid - total;
 
+  changeAmount.textContent = formatCurrency(change);
+  changeBox.hidden = false;
   showMessage("Payment successful.", "success");
   generateReceipt(amountPaid, change);
 }
@@ -215,6 +224,8 @@ function showMessage(message, type) {
 function clearPaymentMessage() {
   paymentMessage.textContent = "";
   paymentMessage.className = "message";
+  changeAmount.textContent = "";
+  changeBox.hidden = true;
 }
 
 payBtn.addEventListener("click", validatePayment);

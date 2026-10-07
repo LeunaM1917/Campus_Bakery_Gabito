@@ -301,15 +301,30 @@ input {
 }
 
 /* ---------- Total ---------- */
+.subtotal-box,
 .total-box {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
+  font-weight: 600;
+}
+
+.subtotal-box {
+  margin-top: 12px;
+  padding: 6px 0;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.subtotal-box strong {
+  font-variant-numeric: tabular-nums;
+}
+
+.total-box {
   margin-top: 12px;
   padding: 18px 0;
   border-top: 2px solid var(--ink);
   font-size: 16px;
-  font-weight: 600;
 }
 
 .total-box strong {
@@ -318,6 +333,25 @@ input {
   font-weight: 700;
   letter-spacing: -0.02em;
   color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.change-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-top: -10px;
+  padding-bottom: 16px;
+  color: var(--pandan);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.change-box[hidden] {
+  display: none;
+}
+
+.change-box strong {
   font-variant-numeric: tabular-nums;
 }
 
